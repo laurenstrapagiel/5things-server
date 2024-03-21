@@ -9,8 +9,10 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5050;
 
+const allRoutes = require("./routes/routers");
+
 // all routes
-app.use("/", warehousesRoutes);
+app.use("/", allRoutes);
 
 app.listen(PORT, () => {
   console.log(`running at http://localhost:${PORT}`);
