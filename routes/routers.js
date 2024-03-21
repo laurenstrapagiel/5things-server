@@ -6,5 +6,7 @@ router
   .route("/users")
   .get(usersController.getUsers)
 
+  router.route("/exercises").get(exercisesController.getExercises);
+
 
 module.exports = router;
