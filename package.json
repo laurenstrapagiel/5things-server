@@ -8,6 +8,7 @@
   },
   "scripts": {
     "db:migrate": "knex migrate:latest",
-    "db:seed": "knex seed:run"
+    "db:seed": "knex seed:run",
+    "start": "node index.js"
   }
 }
