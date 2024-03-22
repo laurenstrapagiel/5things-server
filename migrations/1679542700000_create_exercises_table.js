@@ -11,7 +11,7 @@ exports.up = function (knex) {
       .references("users.id")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
-    table.timestamp("created_at").defaultTo(knex.fn.now());
+  table.timestamp("created_at").defaultTo(knex.fn.now());
     table.integer("rating_before").notNullable();
     table.string("location").notNullable();
 

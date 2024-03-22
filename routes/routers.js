@@ -7,6 +7,7 @@ router
   .get(usersController.getUsers)
 
   router.route("/exercises").get(exercisesController.getExercises);
+   router.route("/exercises").post(exercisesController.postExercise);
 
   router.route("/exercises/:id").get(exercisesController.getUserExercises);
 

@@ -75,7 +75,63 @@ const getUserExercises = async (req, res) => {
   }
 };
 
+const postExercise = async (req, res) => {
+  try {
+    const {
+      user_id,
+      location,
+      rating_before,
+      see_1,
+      see_2,
+      see_3,
+      see_4,
+      see_5,
+      touch_1,
+      touch_2,
+      touch_3,
+      touch_4,
+      hear_1,
+      hear_2,
+      hear_3,
+      smell_1,
+      smell_2,
+      taste_1,
+      rating_after,
+    } = req.body;
+
+    const created_at = new Date().toISOString(); 
+
+    await knex("exercises").insert({
+      user_id,
+      created_at,
+      location,
+      rating_before,
+      see_1,
+      see_2,
+      see_3,
+      see_4,
+      see_5,
+      touch_1,
+      touch_2,
+      touch_3,
+      touch_4,
+      hear_1,
+      hear_2,
+      hear_3,
+      smell_1,
+      smell_2,
+      taste_1,
+      rating_after,
+    });
+
+    res.status(201).json({ message: "Exercise created successfully" });
+  } catch (error) {
+    res.status(500).json({ message: `Error creating exercise: ${error}` });
+  }
+};
+
 module.exports = {
   getExercises,
   getUserExercises,
+  postExercise,
 };
