@@ -8,5 +8,7 @@ router
 
   router.route("/exercises").get(exercisesController.getExercises);
 
+  router.route("/exercises/:id").get(exercisesController.getUserExercises);
+
 
 module.exports = router;
