@@ -1,4 +1,5 @@
 const knex = require("knex")(require("../knexfile"));
+const jwt = require("jsonwebtoken");
 
 const getExercises = async (req, res) => {
   try {
@@ -77,8 +78,11 @@ const getUserExercises = async (req, res) => {
 
 const postExercise = async (req, res) => {
   try {
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, "secret_key");
+    const userId = decodedToken.userId;
+
     const {
-      user_id,
       location,
       rating_before,
       see_1,
@@ -99,10 +103,10 @@ const postExercise = async (req, res) => {
       rating_after,
     } = req.body;
 
-    const created_at = new Date().toISOString().slice(0, 19).replace("T", " "); 
+    const created_at = new Date().toISOString().slice(0, 19).replace("T", " ");
 
     await knex("exercises").insert({
-      user_id,
+      user_id: userId,
       created_at,
       location,
       rating_before,
