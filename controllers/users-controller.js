@@ -2,18 +2,6 @@ const knex = require("knex")(require("../knexfile"));
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const getUsers = async (req, res) => {
-  try {
-    let usersData = await knex("users").select("id", "username", "password");
-
-    res.status(200).json(usersData);
-  } catch (error) {
-    res.status(500).json({
-      message: `Error retrieving users data: ${error}`,
-    });
-  }
-};
-
 const loginUser = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -66,7 +54,6 @@ const getProfile = async (req, res) => {
 };
 
 module.exports = {
-  getUsers,
   loginUser,
   getProfile,
 };
