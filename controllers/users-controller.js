@@ -26,6 +26,20 @@ const loginUser = async (req, res) => {
   }
 };
 
+const registerUser = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await knex("users").insert({ username, password: hashedPassword });
+
+    res.status(201).json({ message: "Successfully registered" });
+  } catch (error) {
+    res.status(500).json({ message: `Error registering user: ${error}` });
+  }
+};
+
 const getProfile = async (req, res) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
@@ -56,4 +70,5 @@ const getProfile = async (req, res) => {
 module.exports = {
   loginUser,
   getProfile,
+  registerUser,
 };

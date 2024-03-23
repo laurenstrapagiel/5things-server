@@ -9,5 +9,7 @@ router.route("/profile").get(usersController.getProfile);
 
 router.route("/exercises").post(exercisesController.postExercise);
 
+router.route("/register").post(usersController.registerUser);
+
 
 module.exports = router;
