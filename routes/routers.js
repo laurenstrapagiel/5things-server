@@ -6,6 +6,8 @@ router.route("/users").get(usersController.getUsers);
 
 router.route("/login").post(usersController.loginUser);
 
+router.route("/profile").get(usersController.getProfile);
+
 router.route("/exercises").get(exercisesController.getExercises);
 router.route("/exercises").post(exercisesController.postExercise);
 

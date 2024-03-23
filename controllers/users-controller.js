@@ -4,11 +4,7 @@ const bcrypt = require("bcrypt");
 
 const getUsers = async (req, res) => {
   try {
-    let usersData = await knex("users").select(
-      "id",
-      "username",
-      "password"
-    );
+    let usersData = await knex("users").select("id", "username", "password");
 
     res.status(200).json(usersData);
   } catch (error) {
@@ -42,7 +38,35 @@ const loginUser = async (req, res) => {
   }
 };
 
+const getProfile = async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+
+    const decodedToken = jwt.verify(token, "secret_key");
+    const userId = decodedToken.userId;
+
+    const userProfile = await knex("users").where({ id: userId }).first();
+    if (!userProfile) {
+      return res.status(404).json({ message: "User profile not found" });
+    }
+
+    const userExercises = await knex("exercises").where({ user_id: userId });
+
+    const userData = {
+      profile: userProfile,
+      exercises: userExercises,
+    };
+
+    res.status(200).json(userData);
+  } catch (error) {
+    res.status(500).json({
+      message: `Error retrieving user profile: ${error}`,
+    });
+  }
+};
+
 module.exports = {
   getUsers,
   loginUser,
+  getProfile,
 };

@@ -38,12 +38,13 @@ const getExercises = async (req, res) => {
 
 const getUserExercises = async (req, res) => {
   try {
-    const { id } = req.params;
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, "secret_key");
+    const userId = decodedToken.userId;
 
     const userExercises = await knex("exercises")
       .select(
         "exercises.id",
-        "users.id as user_id",
         "exercises.created_at",
         "exercises.rating_before",
         "exercises.location",
@@ -64,8 +65,7 @@ const getUserExercises = async (req, res) => {
         "exercises.taste_1",
         "exercises.rating_after"
       )
-      .join("users", "exercises.user_id", "users.id")
-      .where("users.id", id);
+      .where("exercises.user_id", userId);
 
     res.status(200).json(userExercises);
   } catch (error) {
