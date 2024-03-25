@@ -1,7 +1,7 @@
 const knex = require("knex")(require("../knexfile"));
 const jwt = require("jsonwebtoken");
 
-
+//post new exercise
 
 const postExercise = async (req, res) => {
   try {
@@ -61,6 +61,23 @@ const postExercise = async (req, res) => {
   }
 };
 
+//delete exercise
+
+const deleteExercise = async (req, res) => {
+  try {
+    const { id } = req.params; 
+
+    await knex("exercises").where({ id }).delete();
+
+    res.status(200).json({ message: "Exercise deleted successfully" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: `Error deleting exercise: ${error.message}` });
+  }
+};
+
 module.exports = {
   postExercise,
+  deleteExercise,
 };

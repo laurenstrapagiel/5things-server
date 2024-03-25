@@ -9,6 +9,8 @@ router.route("/profile").get(usersController.getProfile);
 
 router.route("/exercises").post(exercisesController.postExercise);
 
+router.route("/exercises/:id").delete(exercisesController.deleteExercise);
+
 router.route("/register").post(usersController.registerUser);
 
 
