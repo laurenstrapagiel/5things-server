@@ -30,7 +30,7 @@ const postExercise = async (req, res) => {
       rating_after,
     } = req.body;
 
-    const created_at = new Date().toISOString().slice(0, 19).replace("T", " ");
+    const created_at = new Date();
 
     await knex("exercises").insert({
       user_id: userId,
