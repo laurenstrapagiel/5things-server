@@ -9,7 +9,7 @@ exports.seed = async function (knex) {
     {
       id: 1,
       user_id: 1,
-      created_at: new Date(1648290791000),
+      created_at: new Date(1658373000000),
       rating_before: 5,
       location: "home",
       see_1: "couch",
@@ -32,7 +32,7 @@ exports.seed = async function (knex) {
     {
       id: 2,
       user_id: 1,
-      created_at: new Date(1648290791000),
+      created_at: new Date(1658373000000),
       rating_before: 4,
       location: "mall",
       see_1: "store",
@@ -55,7 +55,7 @@ exports.seed = async function (knex) {
     {
       id: 3,
       user_id: 2,
-      created_at: new Date(1648290791000),
+      created_at: new Date(1658576700000),
       rating_before: 4,
       location: "work",
       see_1: "computer",
@@ -78,7 +78,7 @@ exports.seed = async function (knex) {
     {
       id: 4,
       user_id: 1,
-      created_at: new Date(1648290791000),
+      created_at: new Date(1658774100000),
       rating_before: 3,
       location: "park",
       see_1: "trees",
@@ -101,7 +101,7 @@ exports.seed = async function (knex) {
     {
       id: 5,
       user_id: 1,
-      created_at: new Date(1648290791000),
+      created_at: new Date(1658863200000),
       rating_before: 2,
       location: "beach",
       see_1: "sand",
@@ -124,7 +124,7 @@ exports.seed = async function (knex) {
     {
       id: 6,
       user_id: 1,
-      created_at: new Date(1648290791000),
+      created_at: new Date(1659063600000),
       rating_before: 4,
       location: "movie theater",
       see_1: "screen",
@@ -147,7 +147,7 @@ exports.seed = async function (knex) {
     {
       id: 7,
       user_id: 1,
-      created_at: new Date(1648290791000),
+      created_at: new Date(1659174600000),
       rating_before: 5,
       location: "restaurant",
       see_1: "tables",
